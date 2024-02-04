@@ -21,6 +21,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        DBHandler dbHandler = new DBHandler(Login.this);
+        dbHandler.addNewUser("Ammar", "27", "1726382716321", "8349587", "32f43f5423f5432f5432ff5", "f2345f23f5432f", "sdfgv sdfvgsf sdvfg sdfvgf");
+
         Button loginButton = findViewById(R.id.login_btn);
         TextView registerLink = findViewById(R.id.register_link);
 

@@ -1,3 +1,5 @@
+package com.example.intelligentalert;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +12,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "users";
 
     // below int is our database version
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // below variable is for our table name.
     private static final String TABLE_NAME = "authentication";
@@ -39,6 +41,9 @@ public class DBHandler extends SQLiteOpenHelper {
     // below variable is for our password salt column.
     private static final String PASSWORD_SALT_COL = "salt";
 
+    // below variable is for our password salt column.
+    private static final String USER_TYPE_COL = "type";
+
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -59,6 +64,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + CONTACT_COL + " TEXT,"
                 + PASSWORD_HASH_COL + " TEXT,"
                 + PASSWORD_SALT_COL + " TEXT,"
+                + USER_TYPE_COL + " TEXT,"
                 + ADDRESS_COL + " TEXT)";
 
         // at last we are calling a exec sql
@@ -67,7 +73,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewUser(String courseName, String courseDuration, String courseDescription, String courseTracks) {
+    public void addNewUser(String name, String age, String cnic, String contact, String passwordHash, String passwordSalt, String address) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -80,13 +86,14 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(NAME_COL, courseName);
-        values.put(AGE_COL, courseDuration);
-        values.put(CNIC_COL, courseDescription);
-        values.put(CONTACT_COL, courseTracks);
-        values.put(PASSWORD_HASH_COL, courseTracks);
-        values.put(PASSWORD_SALT_COL, courseTracks);
-        values.put(ADDRESS_COL, courseTracks);
+        values.put(NAME_COL, name);
+        values.put(AGE_COL, age);
+        values.put(CNIC_COL, cnic);
+        values.put(CONTACT_COL, contact);
+        values.put(PASSWORD_HASH_COL, passwordHash);
+        values.put(PASSWORD_SALT_COL, passwordSalt);
+        values.put(USER_TYPE_COL, "customer");
+        values.put(ADDRESS_COL, address);
 
         // after adding all values we are passing
         // content values to our table.
@@ -94,7 +101,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // at last we are closing our
         // database after adding database.
-        db.close();
+//        db.close();
     }
 
     @Override
