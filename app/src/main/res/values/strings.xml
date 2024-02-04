@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Intelligent Alert</string>
+    <string name="username_literal">Username (CNIC)</string>
+    <string name="password_literal">Password</string>
+    <string name="login_literal">Login</string>
+    <string name="register_literal">Register</string>
+    <string name="register_consent">No account? Click here to register.</string>
+    <string name="login_consent">Already have an account? Click here to sign-in.</string>
+    <string name="name_literal">Name</string>
+    <string name="age_literal">Age</string>
+    <string name="cnic_literal">CNIC Number</string>
+    <string name="contact_literal">Contact Number</string>
+    <string name="address_literal">Address</string>
+    <string name="confirm_password_literal">Confirm Password</string>password
+</resources>

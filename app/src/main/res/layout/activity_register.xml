@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:layout_margin="10dp"
+    android:id="@+id/reg_name"
+    android:hint="@string/name_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_name"
+        app:layout_constraintLeft_toLeftOf="@id/reg_name"
+        app:layout_constraintRight_toRightOf="@id/reg_name"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_age"
+        android:hint="@string/age_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_age"
+        app:layout_constraintLeft_toLeftOf="@id/reg_age"
+        app:layout_constraintRight_toRightOf="@id/reg_age"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_cnic"
+        android:hint="@string/cnic_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_cnic"
+        app:layout_constraintLeft_toLeftOf="@id/reg_cnic"
+        app:layout_constraintRight_toRightOf="@id/reg_cnic"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_contact"
+        android:hint="@string/contact_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_contact"
+        app:layout_constraintLeft_toLeftOf="@id/reg_contact"
+        app:layout_constraintRight_toRightOf="@id/reg_contact"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_address"
+        android:hint="@string/address_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_address"
+        app:layout_constraintLeft_toLeftOf="@id/reg_address"
+        app:layout_constraintRight_toRightOf="@id/reg_address"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_password"
+        android:hint="@string/password_literal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reg_password"
+        app:layout_constraintLeft_toLeftOf="@id/reg_password"
+        app:layout_constraintRight_toRightOf="@id/reg_password"
+        android:layout_margin="10dp"
+        android:id="@+id/reg_confirm_password"
+        android:hint="@string/confirm_password_literal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/reg_confirm_password"
+        app:layout_constraintRight_toRightOf="@id/reg_confirm_password"
+        app:layout_constraintTop_toBottomOf="@id/reg_confirm_password"
+        android:layout_marginTop="20dp"
+        android:id="@+id/register_btn"
+        android:text="@string/register_literal"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/register_btn"
+        app:layout_constraintLeft_toLeftOf="@id/register_btn"
+        app:layout_constraintRight_toRightOf="@id/register_btn"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/design_default_color_primary"
+        android:id="@+id/login_link"
+        android:text="@string/login_consent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
