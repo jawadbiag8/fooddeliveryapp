@@ -2,8 +2,11 @@ package com.example.intelligentalert;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -72,7 +75,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    // this method is use to add new course to our sqlite database.
+    // this method is use to add new user to our sqlite database.
     public void addNewUser(String name, String age, String cnic, String contact, String passwordHash, String passwordSalt, String address) {
 
         // on below line we are creating a variable for
@@ -102,6 +105,32 @@ public class DBHandler extends SQLiteOpenHelper {
         // at last we are closing our
         // database after adding database.
 //        db.close();
+    }
+
+    // we have created a new method for reading all the users.
+    public ArrayList<String> readUsers() {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // on below line we are creating a new array list.
+        ArrayList<String> userModalArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorUsers.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                userModalArrayList.add(cursorUsers.getString(3));
+            } while (cursorUsers.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorUsers.close();
+        return userModalArrayList;
     }
 
     @Override

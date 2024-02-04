@@ -24,6 +24,7 @@
         app:layout_constraintRight_toRightOf="@id/reg_name"
         android:layout_margin="10dp"
         android:id="@+id/reg_age"
+        android:inputType="number"
         android:hint="@string/age_literal"/>
 
     <EditText
@@ -34,6 +35,8 @@
         app:layout_constraintRight_toRightOf="@id/reg_age"
         android:layout_margin="10dp"
         android:id="@+id/reg_cnic"
+        android:digits="1234567890-"
+        android:inputType="number"
         android:hint="@string/cnic_literal"/>
 
     <EditText
