@@ -76,7 +76,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new user to our sqlite database.
-    public void addNewUser(String name, String age, String cnic, String contact, String passwordHash, String passwordSalt, String address) {
+    public void addNewUser(String name, String age, String cnic, String contact, String passwordHash, String passwordSalt, String address,String type) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -95,7 +95,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(CONTACT_COL, contact);
         values.put(PASSWORD_HASH_COL, passwordHash);
         values.put(PASSWORD_SALT_COL, passwordSalt);
-        values.put(USER_TYPE_COL, "customer");
+        values.put(USER_TYPE_COL, type);
         values.put(ADDRESS_COL, address);
 
         // after adding all values we are passing
@@ -131,6 +131,33 @@ public class DBHandler extends SQLiteOpenHelper {
         // and returning our array list.
         cursorUsers.close();
         return userModalArrayList;
+    }
+
+    public String readUsers(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String userRowsArrayList = new String();
+
+        // Create a cursor to read data from the database.
+        Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + CNIC_COL + " = ?", new String[]{username});
+
+        // Move the cursor to the first position.
+        if (cursorUsers.moveToFirst()) {
+            do {
+                // Construct a string representation of the entire row.
+                StringBuilder rowBuilder = new StringBuilder();
+                for (int i = 0; i < cursorUsers.getColumnCount(); i++) {
+                    rowBuilder.append(cursorUsers.getString(i)).append(",");
+                }
+                // Remove the trailing comma and add the row to the ArrayList.
+                userRowsArrayList=rowBuilder.toString().substring(0, rowBuilder.length() - 1);
+            } while (cursorUsers.moveToNext());
+        }
+
+        // Close the cursor to release resources.
+        cursorUsers.close();
+
+        // Return the ArrayList containing complete rows.
+        return userRowsArrayList;
     }
 
     @Override

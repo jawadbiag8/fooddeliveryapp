@@ -14,14 +14,15 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Register extends AppCompatActivity {
+public class managers_signup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_managers_signup);
+        Intent login = new Intent(this, managers_login.class);
 
-        DBHandler dbHandler = new DBHandler(Register.this);
+        DBHandler dbHandler = new DBHandler(managers_signup.this);
 
         EditText name = findViewById(R.id.reg_name);
         EditText age = findViewById(R.id.reg_age);
@@ -34,7 +35,6 @@ public class Register extends AppCompatActivity {
 
         TextView loginLink = findViewById(R.id.login_link);
         Button registerBtn = findViewById(R.id.register_btn);
-        Intent login = new Intent(this, Login.class);
 
         registerBtn.setOnClickListener(v -> {
             ArrayList<String> users = dbHandler.readUsers();
@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
                 return;
             }
 
-            dbHandler.addNewUser(name.getText().toString(), age.getText().toString(), cnic.getText().toString(), contact.getText().toString(), password.getText().toString(), password.getText().toString(), address.getText().toString(),"customer");
+            dbHandler.addNewUser(name.getText().toString(), age.getText().toString(), cnic.getText().toString(), contact.getText().toString(), password.getText().toString(), password.getText().toString(), address.getText().toString(),"manager");
             Log.d("Login", "User added successfully");
             startActivity(login);
 

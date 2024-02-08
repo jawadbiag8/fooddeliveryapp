@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Login extends AppCompatActivity {
+public class managers_login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_managers_login);
 
         Button loginButton = findViewById(R.id.login_btn);
         TextView registerLink = findViewById(R.id.register_link);
@@ -28,9 +28,9 @@ public class Login extends AppCompatActivity {
         EditText username = findViewById(R.id.username);
         EditText password = findViewById(R.id.password);
 
-        Intent registerIntent = new Intent(this, Register.class);
+        Intent registerIntent = new Intent(this, managers_signup.class);
         Intent homeIntent = new Intent(this, MainActivity.class);
-        DBHandler dbHandler = new DBHandler(Login.this);
+        DBHandler dbHandler = new DBHandler(managers_login.this);
 
         loginButton.setOnClickListener(v -> {
             if (TextUtils.isEmpty(username.getText().toString())) {
@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity {
             ;
             String users = dbHandler.readUsers(username.getText().toString());
             String data[] = users.split(",");
-            if (data[5].equals(password.getText().toString())&&data[3].equals(username.getText().toString())&&data[7].equals("customer")) {
+            if (data[5].equals(password.getText().toString())&&data[3].equals(username.getText().toString())&& !data[7].equals("customer")) {
                 homeIntent.putExtra("username", data[1]);
                 homeIntent.putExtra("type", data[7]);
                 startActivity(homeIntent);

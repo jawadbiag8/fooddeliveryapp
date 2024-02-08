@@ -5,6 +5,7 @@
     <string name="login_literal">Login</string>
     <string name="register_literal">Register</string>
     <string name="register_consent">No account? Click here to register.</string>
+    <string name="Welcome">kya bat ha.</string>
     <string name="login_consent">Already have an account? Click here to sign-in.</string>
     <string name="name_literal">Name</string>
     <string name="age_literal">Age</string>
